@@ -27,8 +27,20 @@ docker -v'''
     stage('build docker image') {
       steps {
         sh '''sudo docker build /home/ubuntu/workspace/nodejs_main -t webapp
-sudo docker run -d -p 3000:1000 webapp'''
+'''
         echo 'image built successfully...'
+      }
+    }
+
+    stage('delete running containers') {
+      steps {
+        sh 'sudo docker container rm -f $(sudo docker ps -aq)'
+      }
+    }
+
+    stage('run app') {
+      steps {
+        sh 'sudo docker run -d -p 3000:1000 webapp'
       }
     }
 
