@@ -24,7 +24,11 @@ node -v'''
 
     stage('run the app') {
       steps {
-        sh 'sudo node /home/ubuntu/workspace/nodejs_main/app.js'
+        dir(path: '/home/ubuntu/workspace/nodejs-main') {
+          sh 'node app.js'
+          echo 'server running successfull...'
+        }
+
       }
     }
 
