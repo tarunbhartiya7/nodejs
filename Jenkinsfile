@@ -41,7 +41,7 @@ do
   sudo docker stop $id && sudo docker rm $id
 done'''
         echo 'running containers deleted...'
-        sh '''ids=$(sudo docker images)
+        sh '''ids=$(sudo docker images -q)
 for id in $ids
 do
   echo "$id"
