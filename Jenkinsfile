@@ -8,7 +8,8 @@ pipeline {
   stages {
     stage('pull from github') {
       steps {
-        git(url: 'https://github.com/tarunbhartiya7/nodejs.git', branch: 'master', poll: true)
+        git(url: 'https://github.com/tarunbhartiya7/nodejs.git', branch: 'main', poll: true)
+        echo 'pulled from github...'
       }
     }
 
