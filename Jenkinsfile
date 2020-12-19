@@ -32,7 +32,7 @@ docker -v'''
       }
     }
 
-    stage('delete running containers') {
+    stage('cleanup') {
       steps {
         sh '''ids=$(sudo docker ps -a -q)
 for id in $ids
@@ -41,6 +41,13 @@ do
   sudo docker stop $id && sudo docker rm $id
 done'''
         echo 'running containers deleted...'
+        sh '''ids=$(sudo docker images)
+for id in $ids
+do
+  echo "$id"
+  sudo docker rmi $id
+done'''
+        echo 'all images deleted...'
       }
     }
 
