@@ -13,20 +13,21 @@ pipeline {
       }
     }
 
-    stage('install nodejs') {
+    stage('install docker') {
       steps {
-        sh '''curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-sudo apt-get install -y nodejs
-node -v'''
-        echo 'nodejs installed...'
+        sh '''sudo apt-get update
+sudo apt install docker.io -y
+sudo systemctl start docker
+sudo systemctl enable docker
+docker -v'''
+        echo 'docker installed...'
       }
     }
 
-    stage('run the app') {
+    stage('Build docker image') {
       steps {
-        sh '''cd /home/ubuntu/workspace/nodejs-main/
-sudo node app.js'''
-        echo 'server running successfull...'
+        sh 'sudo docker build /home/ubuntu/workspace/nodejs_main webapp'
+        echo 'image built successfully...'
       }
     }
 
