@@ -34,11 +34,11 @@ docker -v'''
 
     stage('delete running containers') {
       steps {
-        sh '''ids=$(docker ps -a -q)
+        sh '''ids=$(sudo docker ps -a -q)
 for id in $ids
 do
   echo "$id"
-  docker stop $id && docker rm $id
+  sudo docker stop $id && sudo docker rm $id
 done'''
         echo 'running containers deleted...'
       }
