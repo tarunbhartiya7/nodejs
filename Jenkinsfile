@@ -24,14 +24,6 @@ docker -v'''
       }
     }
 
-    stage('build docker image') {
-      steps {
-        sh '''sudo docker build /home/ubuntu/workspace/nodejs_main -t webapp
-'''
-        echo 'image built successfully...'
-      }
-    }
-
     stage('cleanup') {
       steps {
         sh '''ids=$(sudo docker ps -a -q)
@@ -48,6 +40,14 @@ do
   sudo docker rmi $id
 done'''
         echo 'all images deleted...'
+      }
+    }
+    
+    stage('build docker image') {
+      steps {
+        sh '''sudo docker build /home/ubuntu/workspace/nodejs_main -t webapp
+'''
+        echo 'image built successfully...'
       }
     }
 
