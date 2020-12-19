@@ -24,7 +24,7 @@ node -v'''
 
     stage('run the app') {
       steps {
-        sh 'node /home/ubuntu/workspace/nodejs_main/app.js'
+        sh 'sudo node /home/ubuntu/workspace/nodejs_main/app.js'
       }
     }
 
