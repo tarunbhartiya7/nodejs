@@ -24,9 +24,9 @@ docker -v'''
       }
     }
 
-    stage('Build docker image') {
+    stage('build docker image') {
       steps {
-        sh 'sudo docker build /home/ubuntu/workspace/nodejs_main webapp'
+        sh 'sudo docker build /home/ubuntu/workspace/nodejs_main -t webapp'
         echo 'image built successfully...'
       }
     }
