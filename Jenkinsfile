@@ -14,7 +14,7 @@ node -v'''
 
         stage('pull from github') {
           steps {
-            git(url: 'https://github.com/tarunbhartiya7/nodejs', poll: true, branch: 'master')
+            git(url: 'https://github.com/tarunbhartiya7/nodejs.git', poll: true, branch: 'master')
             echo 'pulled repo from github...'
           }
         }
