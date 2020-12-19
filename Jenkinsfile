@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'worker-1'
+    }
+
+  }
   stages {
     stage('install nodejs') {
       parallel {
