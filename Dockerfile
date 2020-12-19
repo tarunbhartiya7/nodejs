@@ -1,7 +1,7 @@
 FROM node:alpine3.10
 
-COPY app.js .
+COPY . /opt
 
-EXPOSE 1000
+WORKDIR /opt
 
-ENTRYPOINT [“node”, “app.js”]
+ENTRYPOINT node app.js
