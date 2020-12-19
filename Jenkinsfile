@@ -13,5 +13,20 @@ pipeline {
       }
     }
 
+    stage('install nodejs') {
+      steps {
+        sh '''curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt-get install -y nodejs
+node -v'''
+        echo 'nodejs installed...'
+      }
+    }
+
+    stage('run the app') {
+      steps {
+        sh 'node app.js'
+      }
+    }
+
   }
 }
